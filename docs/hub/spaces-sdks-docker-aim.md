@@ -24,8 +24,7 @@ All you need to do is:
 
 Once you have created the Space, you'll see the `Building` status, and once it becomes `Running,` your Space is ready to go!
 
-### TODO: change screenshot once the Aim template is available
-![Creating an Aim Space ](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hub/spaces-livebook-new-space.png)
+![Creating an Aim Space ](https://user-images.githubusercontent.com/23078323/231592155-869148a0-9a92-475f-8ebe-34d4deb2abc2.png)
 
 Now, when you navigate to the **App** section of your space, you'll be able to access the Aim UI.
 
