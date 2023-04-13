@@ -1,113 +1,76 @@
 # Aim on Spaces
 
-**Aim** is an easy-to-use & supercharged open-source experiment tracker. Aim logs your training runs and enables a beautiful UI to compare them and an API to query them programmatically.
-ML engineers and researchers use Aim explorers to compare 1000s of training runs in a few clicks.
+Exciting news! We're delighted to announce the addition of Aim on Hugging Face Spaces. With just a few clicks, you can now easily deploy Aim on the Hugging Face Hub! 🚀
 
-Check out the [Aim docs](https://aimstack.readthedocs.io/en/latest/) to learn more about Aim. 
-If you have an idea for a new feature or have noticed a bug, feel free to [open a feature request or report a bug](https://github.com/aimhubio/aim/issues/new/choose). 
-
-In the following sections, you'll learn how to deploy Aim on the Hugging Face Hub Spaces and explore your training runs directly from the Hub. 
+Aim is an open-source, self-hosted AI Metadata tracking tool designed to handle 100,000s of tracked metadata sequences. Two most famous AI metadata applications are: experiment tracking and prompt engineering. To uncover the full potential of Aim, please refer to the [GitHub repository](https://github.com/aimhubio/aim).
 
 ## Deploy Aim on Spaces
 
-You can deploy Aim on Spaces with just a few clicks:
+Starting with Aim on Spaces has never been simpler! To create a new space on Hugging Face, begin by clicking the dropdown menu located in the top right corner of the homepage that displays your profile. Next, select the option '+ New Space'. Upon clicking, you'll be redirected to the 'Create a new Space' page where you'll be required to fill out the fields as shown in the screenshot:
 
-<a  href="https://huggingface.co/new-space?template=argilla/argilla-template-space">
-    <img src="https://huggingface.co/datasets/huggingface/badges/raw/main/deploy-to-spaces-lg.svg" />
-</a>
+<img src="https://user-images.githubusercontent.com/23078323/231592155-869148a0-9a92-475f-8ebe-34d4deb2abc2.png" alt="Creating an Aim Space" width=800 />
 
-All you need to do is:
-1. Define the owner (your personal account or organization)
-2. Name your Space
-3. Choose the **Aim** Docker template
-4. Set the visibility
+After creating the space, you'll be able to monitor its progress through the Building status. Once it transitions to Running, your space is good to go!”
 
-Once you have created the Space, you'll see the `Building` status, and once it becomes `Running,` your Space is ready to go!
+Upon navigating to the App section of your space, you can use Aim just as you would normally. By utilizing Aim, you (and anyone else who has access to the space) can view comprehensive logs of model training, allowing for a better understanding of the model being used.
 
-<img src="https://user-images.githubusercontent.com/23078323/231592155-869148a0-9a92-475f-8ebe-34d4deb2abc2.png" alt="Creating an Aim Space" width=900 />
+This setup offers a fantastic feature wherein generating a new set of logs only requires committing the changes to the repository. HF Spaces will then automatically deploy the repository, making the process incredibly convenient. Isn't that great? ☺️
 
-Now, when you navigate to the **App** section of your space, you'll be able to access the Aim UI.
+## Quick Start: Aim on HF Spaces end-to-end example
 
-## Compare your experiments with Aim on Spaces
-Let's use a quick example of a PyTorch CNN trained on MNIST to demonstrate end-to-end Aim on Spaces deployment. 
-The full example in the [Aim repo examples folder](https://github.com/aimhubio/aim/blob/main/examples/pytorch_track.py).
+### Start with Aim
 
-```python
-from aim import Run
-from aim.pytorch import track_gradients_dists, track_params_dists
+We can showcase a straightforward fine-tuning setup using Aim on Spaces. To achieve this, we simply need to follow the steps outlined in the Transformers tutorials, available at [Transformers page](https://huggingface.co/docs/transformers/training).
 
-# Initialize a new Run
-aim_run = Run()
-...
-items = {'accuracy': acc, 'loss': loss}
-aim_run.track(items, epoch=epoch, context={'subset': 'train'})
-
-# Track weights and gradients distributions
-track_params_dists(model, aim_run)
-track_gradients_dists(model, aim_run)
-```
-
-The experiments tracked bdy Aim are stored in the `.aim` folder. **To display the logs with the Aim UI in your HF space, you need to compress the `.aim` folder to a `tar.gz` file and upload it to your Space either using `git` or the Files and Versions sections of your space.** 
-Here's a bash command for that:
-
-```bash
-tar -czf cnn_mnist_runs_hf.tar.gz .aim
-```
-This command will compress the `.aim` directory to `cnn_mnist_runs_hf.tar.gz`. 
-
-The final step is to edit the compressed file name in the space’s Dockerfile. 
-
-```Dockerfile
-...
-# Note: Change the name from fastspeech_logs.tar.gz to your filename
-COPY fastspeech_logs.tar.gz .
-RUN tar xvzf fastspeech_logs.tar.gz
-```
-That’s it! Now open the App section of your space and the Aim UI is available with your logs.
-Here is what to expect: 
-
-![Aim UI on HF Hub Spaces](https://user-images.githubusercontent.com/67782184/224995208-692afbea-dfe0-4d2a-89ac-4ba552e49a98.png)
-
-Filter your runs using Aim’s Pythonic search. You can write pythonic [queries against](https://aimstack.readthedocs.io/en/latest/using/search.html) EVERYTHING you have tracked - metrics, hyperparams etc.
-In the screenshot below, we query all the `accuracy` metrics where the last tracked value is `≥ 90`.
-
-![image](https://user-images.githubusercontent.com/67782184/224995427-db0d8a2b-1d48-46d1-b519-78a2d4d5d0aa.png)
-
-Check out a [text2speech example ](https://huggingface.co/spaces/aimstack/text2speech/tree/main) on HF Hub Spaces.
-
-**_Note_** that if your logs are in TensorBoard format, you can easily convert [them to Aim with one command](https://aimstack.readthedocs.io/en/latest/quick_start/convert_data.html#show-tensorboard-logs-in-aim) and use the many advanced and high-performant training run comparison features available.
-
-## Track your Transformers runs with Aim
-
-As we saw in the previous section, tracking PyTorch experiments with Aim and displaying the results on Spaces is straightforward. To make your life even easier, Aim has out-of-the-box integration with Transformers! 
-To get started with Aim for your Transformers experiments, include the appropriate `AimCallback` in your training arguments and Aim will handle all the rest! Here's a code snippet showcasing just that:
+Aim is seamlessly integrated with HuggingFace Transformers. To use Aim with Transformers, simply include the appropriate AimCallback in your training arguments and let Aim handle the rest. Here's a code snippet demonstrating this integration:
 
 ```python
 from aim.hugging_face import AimCallback
-from transformers import Trainer
 
-aim_callback = AimCallback(repo='/log/dir/path', experiment='your_experiment_name')
+aim_callback = AimCallback(repo='your_repo_path', experiment='your_experiment_name')
 
 trainer = Trainer(
-       model=model,
-       args=training_args,
-       callbacks=[aim_callback]
-    )
+    model=model,
+    args=training_args,
+    train_dataset=small_train_dataset,
+    eval_dataset=small_eval_dataset,
+    compute_metrics=compute_metrics,
+    callbacks=[aim_callback]
+)
 ```
 
-The Aim callback will automatically open an Aim Session and close it when the trainer is done. 
-When trainer.train(), trainer.evaluate() or trainer.predict() is called, aim_callback will automatically log the hyper-params and respective metrics. The rest of the process is exactly the same as in the MNIST example above!
+The AimCallback will automatically create an Aim Run and close it when the training is finished. When you perform an action on the trainer such as train, evaluate, or predict, the aim_callback will automatically log the hyperparameters and respective metrics.
 
-You can also find more in-depth examples on fine-tuning Transformers models on the GLUE benchmark [here](https://github.com/aimhubio/aim/blob/main/examples/hugging_face_track.py). You can also check out this [blogpost](https://medium.com/aimstack/aim-v2-2-0-hugging-face-integration-57efa2eec104) for a detailed look at using Aim and Aim UI with Transformers.
+The tutorial uses the 'yelp_review_full' dataset to fine-tune the pre-trained 'bert-base-cased' model. To broaden the tutorial's focus, we can experiment with two additional pre-trained models, such as 'xlm-roberta-base' and 'roberta-base'.
 
-## More on HF Spaces
+You can also find a more detailed example of fine-tuning Transformers models on the GLUE benchmark [here](https://github.com/aimhubio/aim/blob/main/examples/hugging_face_track.py). If you're interested in learning more about Aim and Aim with Transformers, you can check out this [blogpost](https://medium.com/aimstack/aim-v2-2-0-hugging-face-integration-57efa2eec104) which provides a detailed guide on using Aim with Transformers.
 
-- [HF Docker spaces](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
-- [HF Docker space examples](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
+### Running Aim on HF spaces
 
-## Feedback and Support
+When the experiments are tracked using Aim, the logs are saved in an .aim directory. To view the logs with Aim in your HF space, you need to compress this folder into an aim_repo.tar.gz file, with the following command:
 
-If you have improvement suggestions or need support, please open an issue on [Aim GitHub repo](https://github.com/aimhubio/aim). 
+```bash
+tar -czvf aim_repo.tar.gz .aim
+```
 
-The [Aim community Discord](https://github.com/aimhubio/aim#-community) is also available for community discussions.
+After which upload the compressed file to your space using git or the ‘Files and Versions’ section.
 
+Please keep in mind that in this example, we've used aim_repo as the name of the .tar.gz file. However, you have the flexibility to give the compressed file any name you wish and then rename it in the Dockerfile. Don’t forget to push your changes. ☺️
+
+That's it! After completing the previous steps, when you navigate to the ‘App’ section of your space, you'll see the Aim interface displaying your logs. 💫
+
+<!-- TODO add a screenshot of Main Explorer page -->
+
+### Exploring the runs with Aim
+
+Aim provides a performant and beautiful UI for exploring and comparing training runs, prompt sessions. Additionally, its SDK enables programmatic access to tracked metadata — perfect for automations and Jupyter Notebook analysis.
+
+The 'Metrics Explorer' page is where you will likely spend most of your time exploring the progress and results of your runs. On the 'Metrics Explorer' page, you can choose which metrics you want to track and use Aim's 'Pythonic search' functionality to easily filter your runs based on metrics and hyperparameters. This allows for much more in-depth demos of model experiments. Aim offers many other features as well, so be sure to check out [the documentation](https://aimstack.readthedocs.io/en/latest/overview.html) to explore its full potential.
+
+<!-- TODO add a screenshot of Metrics Explorer page -->
+
+If you want to delve deeper into Hugging face Aim Spaces and play around with the Aim UI, check out the [demo spaces](https://huggingface.co/aimstack) we have on the Hugging face Hub.
+
+## Feedback and support
+
+If you need support or have any improvement suggestions, please join the [Aim community on GitHub](https://github.com/aimhubio). 🤗
