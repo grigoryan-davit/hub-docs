@@ -59,7 +59,7 @@ Please keep in mind that in this example, we've used aim_repo as the name of the
 
 That's it! After completing the previous steps, when you navigate to the ‘App’ section of your space, you'll see the Aim interface displaying your logs. 💫
 
-<!-- TODO add a screenshot of Main Explorer page -->
+<img width="1440" alt="Overview page" src="https://user-images.githubusercontent.com/23078323/231906680-69581f80-2f20-4c82-a5c1-0ca000d0b8c0.png">
 
 ### Exploring the runs with Aim
 
@@ -67,7 +67,8 @@ Aim provides a performant and beautiful UI for exploring and comparing training 
 
 The 'Metrics Explorer' page is where you will likely spend most of your time exploring the progress and results of your runs. On the 'Metrics Explorer' page, you can choose which metrics you want to track and use Aim's 'Pythonic search' functionality to easily filter your runs based on metrics and hyperparameters. This allows for much more in-depth demos of model experiments. Aim offers many other features as well, so be sure to check out [the documentation](https://aimstack.readthedocs.io/en/latest/overview.html) to explore its full potential.
 
-<!-- TODO add a screenshot of Metrics Explorer page -->
+<img width="1440" alt="Metrics Explorer" src="https://user-images.githubusercontent.com/23078323/231906739-ae1017cc-3d5f-4e75-af3d-0ca29f40ee14.png">
+
 
 If you want to delve deeper into Hugging face Aim Spaces and play around with the Aim UI, check out the [demo spaces](https://huggingface.co/aimstack) we have on the Hugging face Hub.
 
