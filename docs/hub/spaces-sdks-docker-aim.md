@@ -10,19 +10,11 @@ In the following sections, you'll learn how to deploy Aim on the Hugging Face Hu
 
 ## Deploy Aim on Spaces
 
-You can deploy Aim on Spaces with just a few clicks:
+You can deploy Aim on Spaces with a single click!
 
-<a  href="https://huggingface.co/new-space?template=aimstack/text2speech">
+<a href="https://huggingface.co/new-space?template=aimstack/aim">
     <img src="https://huggingface.co/datasets/huggingface/badges/raw/main/deploy-to-spaces-lg.svg" />
 </a>
-
-<!-- TODO right link -->
-All you need to do is:
-
-1. Define the owner (your personal account or organization)
-2. Name your Space
-3. Choose the **Aim** Docker template
-4. Set the visibility
 
 Once you have created the Space, you'll see the `Building` status, and once it becomes `Running,` your Space is ready to go!
 
@@ -63,11 +55,7 @@ Here is what to expect:
 
 ![Aim UI on HF Hub Spaces](https://user-images.githubusercontent.com/23078323/232034340-0ba3ebbf-0374-4b14-ba80-1d36162fc994.png)
 
-Filter your runs using Aim’s Pythonic search. You can write pythonic [queries against](https://aimstack.readthedocs.io/en/latest/using/search.html) EVERYTHING you have tracked - metrics, hyperparams etc.
-
-<!-- TODO add metric explorer page -->
-
-Check out a [text2speech example ](https://huggingface.co/spaces/aimstack/text2speech/tree/main) on HF Hub Spaces.
+Filter your runs using Aim’s Pythonic search. You can write pythonic [queries against](https://aimstack.readthedocs.io/en/latest/using/search.html) EVERYTHING you have tracked - metrics, hyperparams etc. Check out some [examples](https://huggingface.co/aimstack) on HF Hub Spaces.
 
 <Tip>
 If your logs are in TensorBoard format, you can easily convert [them to Aim with one command](https://aimstack.readthedocs.io/en/latest/quick_start/convert_data.html#show-tensorboard-logs-in-aim) and use the many advanced and high-performant training run comparison features available.
