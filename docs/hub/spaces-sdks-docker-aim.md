@@ -58,7 +58,7 @@ Here is what to expect:
 Filter your runs using Aim’s Pythonic search. You can write pythonic [queries against](https://aimstack.readthedocs.io/en/latest/using/search.html) EVERYTHING you have tracked - metrics, hyperparams etc. Check out some [examples](https://huggingface.co/aimstack) on HF Hub Spaces.
 
 <Tip>
-If your logs are in TensorBoard format, you can easily convert [them to Aim with one command](https://aimstack.readthedocs.io/en/latest/quick_start/convert_data.html#show-tensorboard-logs-in-aim) and use the many advanced and high-performant training run comparison features available.
+If your logs are in TensorBoard format, you can easily convert <a href="https://aimstack.readthedocs.io/en/latest/quick_start/convert_data.html#show-tensorboard-logs-in-aim">them to Aim with one command</a> and use the many advanced and high-performant training run comparison features available.
 </Tip>
 
 ## More on HF Spaces
