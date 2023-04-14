@@ -76,8 +76,13 @@ If your logs are in TensorBoard format, you can easily convert [them to Aim with
 
 ## More on HF Spaces
 
+<<<<<<< HEAD
 - [HF Docker spaces](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
 - [HF Docker space examples](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
+=======
+<img width="1440" alt="Metrics Explorer" src="https://user-images.githubusercontent.com/23078323/231906739-ae1017cc-3d5f-4e75-af3d-0ca29f40ee14.png">
+
+>>>>>>> 873615be0a29acda599db67702139cafe450c851
 
 ## Feedback and Support
 
