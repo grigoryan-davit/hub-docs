@@ -61,12 +61,11 @@ tar -czvf aim_repo.tar.gz .aim
 That’s it! Now open the App section of your Space and the Aim UI is available with your logs.
 Here is what to expect:
 
-![Aim UI on HF Hub Spaces](https://user-images.githubusercontent.com/67782184/224995208-692afbea-dfe0-4d2a-89ac-4ba552e49a98.png)
+![Aim UI on HF Hub Spaces](https://user-images.githubusercontent.com/23078323/232034340-0ba3ebbf-0374-4b14-ba80-1d36162fc994.png)
 
 Filter your runs using Aim’s Pythonic search. You can write pythonic [queries against](https://aimstack.readthedocs.io/en/latest/using/search.html) EVERYTHING you have tracked - metrics, hyperparams etc.
 
-<!-- TODO change image -->
-![image](https://user-images.githubusercontent.com/67782184/224995427-db0d8a2b-1d48-46d1-b519-78a2d4d5d0aa.png)
+<!-- TODO add metric explorer page -->
 
 Check out a [text2speech example ](https://huggingface.co/spaces/aimstack/text2speech/tree/main) on HF Hub Spaces.
 
@@ -76,13 +75,8 @@ If your logs are in TensorBoard format, you can easily convert [them to Aim with
 
 ## More on HF Spaces
 
-<<<<<<< HEAD
 - [HF Docker spaces](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
 - [HF Docker space examples](https://github.com/huggingface/hub-docs/blob/main/docs/hub/spaces-sdks-docker.md)
-=======
-<img width="1440" alt="Metrics Explorer" src="https://user-images.githubusercontent.com/23078323/231906739-ae1017cc-3d5f-4e75-af3d-0ca29f40ee14.png">
-
->>>>>>> 873615be0a29acda599db67702139cafe450c851
 
 ## Feedback and Support
 
